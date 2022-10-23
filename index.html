@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Calculadora de Hidrataion Basal</title>
+</head>
+<body>
+    <div class="card">
+        <div class="form posicion">
+            <section>            
+            <h1>HIDRATACIÓN BASAL</h1>
+            <h5>Ingresa el peso en KG</h5>
+                <input type="number" name="peso" id="peso" placeholder="Peso en kg"><br>
+                <button name="calcular" id="calcular" onclick="calcularHidratacionBasal();">CALCULAR</button>
+            
+            <div id="resultado">    
+            </div>
+            </section>
+        </div>
+        <div class="info posicion">
+            <section>
+                <h1>¿COMO SE REALIZA EL CALCULO?</h1>
+                <ul>
+                    <li> De 0 hasta 10kg se estima 100cc por cada kilo.</li>
+                    <li>Se suman 50cc por cada kilo de peso por arriba de los 10kg hasta 20kg</li>
+                    <li>De 20kg para arriba se suman 20cc por cada kilo adicional</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

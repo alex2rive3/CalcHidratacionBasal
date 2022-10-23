@@ -1,0 +1,53 @@
+body{
+    text-align: center;
+}
+.card{
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+                0 10px 10px rgba(0,0,0,0.22);
+    width: 700px;
+    height: 450px;
+    position: absolute;
+    inset: 0;
+    margin:auto;
+}
+input{
+    padding: 15px 10px;
+    background-color: #eee;
+    border: none;
+    width: 70%;
+    margin-bottom: 25px;
+}
+button{
+    background-color: #9b111e;
+    border:none;
+    padding: 10px 15px;
+    color: #ffffffff;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 25px;
+}
+.form{
+    background-color: white;
+    
+}
+.info{
+    background-color: #9b111e;
+    color: aliceblue;
+}
+#resultado p{
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.posicion{
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+section{
+    top:50%;
+    position: relative;
+    transform: translateY(-50%);
+    overflow: hidden;
+}
