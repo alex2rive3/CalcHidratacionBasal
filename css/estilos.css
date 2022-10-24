@@ -1,4 +1,5 @@
 body{
+    font-family: 'Times New Roman', Times, serif;
     text-align: center;
 }
 .card{
@@ -11,6 +12,8 @@ body{
     margin:auto;
 }
 input{
+    font-size: 14px;
+    font-family: 'Times New Roman', Times, serif;
     padding: 15px 10px;
     background-color: #eee;
     border: none;
@@ -18,7 +21,8 @@ input{
     margin-bottom: 25px;
 }
 button{
-    background-color: #9b111e;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #092956;
     border:none;
     padding: 10px 15px;
     color: #ffffffff;
@@ -29,15 +33,25 @@ button{
 }
 .form{
     background-color: white;
-    
 }
 .info{
-    background-color: #9b111e;
-    color: aliceblue;
+    background-color: #092956;
+    color: #EEEEE8;
 }
+.info ul{
+    padding: 0 15px;
+}
+.info ul li{
+    list-style: none;
+}   
 #resultado p{
-    font-size: 16px;
+    color: #9500F1;
+    font-size: 24px;
     font-weight: bolder;
+}
+
+.medida{
+    color: #949BA0;
 }
 
 .posicion{

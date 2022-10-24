@@ -19,19 +19,19 @@ function calcularHidratacionBasal() {
     }else if(peso >= 1 && peso<=10){
         volumenDiario = peso*100;
         mantenimineto = volumenDiario/24;
-        contenedor.innerHTML = "<p>Volumen Diario:"+volumenDiario + ' cc Mantenimiento:'+Math.round(mantenimineto)+" cc/hr m*m/2: "+Math.round(mantenimineto*1.5)+"cc/hr</p>";
+        contenedor.innerHTML = "<p>"+volumenDiario + ' <span class="medida">cc</span> '+Math.round(mantenimineto)+' <span class="medida"> cc/hr </span>  '+Math.round(mantenimineto*1.5)+'<span class="medida"> cc/hr</span></p>';
     }else if(peso >=11 && peso <=20){
         volumenDiario = 1000 + (peso-10)*50;
         mantenimineto = volumenDiario/24;
-        contenedor.innerHTML = "<p>Volumen Diario: "+volumenDiario + ' cc Mantenimiento: '+Math.round(mantenimineto)+" cc/hr m*m/2: "+Math.round(mantenimineto*1.5)+"cc/hr</p>";
+        contenedor.innerHTML = "<p>"+volumenDiario + ' <span class="medida">cc</span> '+Math.round(mantenimineto)+' <span class="medida"> cc/hr </span>  '+Math.round(mantenimineto*1.5)+'<span class="medida"> cc/hr</span></p>';
     }else if(peso >=21 && peso <=30){
         volumenDiario = 1500+((peso-20)*20);
         mantenimineto = volumenDiario/24;
-        contenedor.innerHTML = "<p>Volumen Diario: "+volumenDiario + ' cc Mantenimiento: '+Math.round(mantenimineto)+" cc/hr m*m/2: "+Math.round(mantenimineto*1.5)+"cc/hr</p>";
+        contenedor.innerHTML = "<p>"+volumenDiario + ' <span class="medida">cc</span> '+Math.round(mantenimineto)+' <span class="medida"> cc/hr </span>  '+Math.round(mantenimineto*1.5)+'<span class="medida"> cc/hr</span></p>';
     }else if (peso>=31){
         SuperficieCorporal = ( (peso * 4) + 7) / (peso + 90);
         volumenMayores30kg1 = SuperficieCorporal *1500;
         volumenMayores30kg2 = SuperficieCorporal *2000;
-        contenedor.innerHTML ="<p>El volumen diario con el metodo SC*1500 es "+Math.round(volumenMayores30kg1)+ " El volumen diario con el metodo SC*2000 es "+Math.round(volumenMayores30kg2)+"</p>";
+        contenedor.innerHTML ="<p>SC*1500: "+Math.round(volumenMayores30kg1)+ '<span class="medida"> cc/hr</span> <br>SC*2000: '+Math.round(volumenMayores30kg2)+'<span class="medida"> cc/hr</span></p>';
     }
 }
