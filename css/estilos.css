@@ -65,3 +65,20 @@ section{
     transform: translateY(-50%);
     overflow: hidden;
 }
+
+@media only screen and (max-width: 600px) {
+    body {
+      width: 700px;
+    }
+    .card{
+        display: flex;
+        flex-direction: column;
+        width: 350;
+        height: 100%;
+        position: absolute;
+        inset: 0;
+        margin:auto;
+        align-content: center;
+        align-items: center;
+    }
+  }
