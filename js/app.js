@@ -1,37 +1,58 @@
-//variables que sera utilizados 
-let volumenDiario = 0;
-let peso = 0;
-let mantenimineto=0;
-let volumenMayores30kg2=0;
-let volumenMayores30kg1=0;
-let SuperficieCorporal =0;
-let contenedor;
-let calcular = document.getElementById("calcular");
-//funcion para realizar los calculos de la hidratacion basal
-function calcularHidratacionBasal() {
-    //recuoeramos el valor que tine el imput
-    peso = document.getElementById("peso").value;
-    //preparamos el lugar en donde vamos a hacer un iinerhtml con la respuesta de los calculos
-    contenedor = document.getElementById('resultado');
+const CALCULAR = document.getElementById('calcular');
+const ERROR = document.getElementById('error');
+const FLU = document.getElementById('flu');
+const MAN = document.getElementById('man');
+const FLUMAN1 = document.getElementById('fluMan1');
+const FLUMAN2 = document.getElementById('fluMan2');
+const INPUT = document.getElementById('peso');
 
-    if (peso<=0) {
-        console.log("el peso no puede ser 0 kg o menos")
-    }else if(peso >= 1 && peso<=10){
-        volumenDiario = peso*100;
-        mantenimineto = volumenDiario/24;
-        contenedor.innerHTML = "<p>"+volumenDiario + ' <span class="medida">cc</span> '+Math.round(mantenimineto)+' <span class="medida"> cc/hr </span>  '+Math.round(mantenimineto*1.5)+'<span class="medida"> cc/hr</span></p>';
-    }else if(peso >=11 && peso <=20){
-        volumenDiario = 1000 + (peso-10)*50;
-        mantenimineto = volumenDiario/24;
-        contenedor.innerHTML = "<p>"+volumenDiario + ' <span class="medida">cc</span> '+Math.round(mantenimineto)+' <span class="medida"> cc/hr </span>  '+Math.round(mantenimineto*1.5)+'<span class="medida"> cc/hr</span></p>';
-    }else if(peso >=21 && peso <=30){
-        volumenDiario = 1500+((peso-20)*20);
-        mantenimineto = volumenDiario/24;
-        contenedor.innerHTML = "<p>"+volumenDiario + ' <span class="medida">cc</span> '+Math.round(mantenimineto)+' <span class="medida"> cc/hr </span>  '+Math.round(mantenimineto*1.5)+'<span class="medida"> cc/hr</span></p>';
-    }else if (peso>=31){
-        SuperficieCorporal = ( (peso * 4) + 7) / (peso + 90);
-        volumenMayores30kg1 = SuperficieCorporal *1500;
-        volumenMayores30kg2 = SuperficieCorporal *2000;
-        contenedor.innerHTML ="<p>SC*1500: "+Math.round(volumenMayores30kg1)+ '<span class="medida"> cc/hr</span> <br>SC*2000: '+Math.round(volumenMayores30kg2)+'<span class="medida"> cc/hr</span></p>';
+//Para ue funcione el enter
+INPUT.addEventListener("keyup", function (e) {
+    if (e.code === 'Enter') {
+        CALCULAR.click();
     }
+});
+CALCULAR.addEventListener('click', () => {
+    const DATO = INPUT.value
+    FLU.style.display = 'none';
+    MAN.style.display = 'none';
+    FLUMAN1.style.display = 'none';
+    FLUMAN2.style.display = 'none';
+    //validamos que se cargue un dato:
+    if (DATO > 0) {
+        ERROR.style.display = 'none';
+        if (DATO <= 30) {
+            let flujo = calcFlujo1(DATO).toFixed(2);
+            let mantenimiento = (flujo * 1.5).toFixed(2);
+            FLU.innerHTML = flujo + ' cc/hr';
+            MAN.innerHTML = 'm+m/2 ' + mantenimiento + ' cc/hr';
+            FLU.style.display = 'block';
+            MAN.style.display = 'block';
+        } else {
+            let flujos = calcFlujo2(DATO).map(f => f.toFixed(2));
+            let mantenimientos = flujos.map(f => { return (f * 1.5).toFixed(2) });
+            FLUMAN1.innerHTML = `Opcion 1: ${flujos[0]}cc/h<br>m+m/2 : ${mantenimientos[0]}cc/h`;
+            FLUMAN2.innerHTML = `Opcion 2: ${flujos[1]}cc/h<br>m+m/2 : ${mantenimientos[1]}cc/h`
+            FLUMAN1.style.display = 'block';
+            FLUMAN2.style.display = 'block';
+        }
+    } else {
+        ERROR.style.display = 'block';
+        FLU.style.display = 'none';
+        MAN.style.display = 'none';
+        FLUMAN1.style.display = 'none';
+        FLUMAN2.style.display = 'none';
+    }
+})
+
+function calcFlujo1(peso) {//Método Holliday-Segar: Para pesos menores o iguales a 30
+    let hBasal = peso <= 10 ? 100 * peso :
+        peso <= 20 ? 100 * 10 + 50 * (peso - 10) :
+            100 * 10 + 50 * 10 + (peso - 20) * 20;
+    return hBasal / 24; //Retornamos el flujo
+}
+
+function calcFlujo2(peso) {//Método de superficie corporal
+    let supCorporal = ((peso * 4) + 7) / (peso * 90);
+    return [supCorporal * 1500 / 24, supCorporal * 2000 / 24];
 }

@@ -1,84 +1,122 @@
-body{
-    font-family: 'Times New Roman', Times, serif;
-    text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+body {
+  background: #f6f5f7;
+  font-family: 'Montserrat', sans-serif;
+  color: #3E363F;
 }
-.card{
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-                0 10px 10px rgba(0,0,0,0.22);
-    width: 700px;
-    height: 450px;
-    position: absolute;
-    inset: 0;
-    margin:auto;
+
+#contenedor{
+  width: 80vw;
+  height: 70vh;
+  text-align: center;
+  /* Estas 3 lineas se encargan de centrar el div vertical y horizontalmente */
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+#calculadora{
+  background: white;
+  /* Con estas 3 lineas vamos a hacer que los divs queden lado a lado */
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+
+#detalle{
+  background: #092956;
+  /* Con estas 3 lineas vamos a hacer que los divs queden lado a lado */
+  width: 50%;
+  height: 100%;
+  float: left;
+  color: #f6f5f7
+}
+
+.contenido{
+  /* Estas tres lineas van a centrar el contenido verticalmente dentro de cada div */
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  overflow: hidden;
+  padding: 30px;
 }
 input{
     font-size: 14px;
-    font-family: 'Times New Roman', Times, serif;
     padding: 15px 10px;
     background-color: #eee;
     border: none;
     width: 70%;
     margin-bottom: 25px;
 }
-button{
-    font-family: 'Times New Roman', Times, serif;
-    background-color: #092956;
-    border:none;
-    padding: 10px 15px;
-    color: #ffffffff;
-    font-size: 15px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    border-radius: 25px;
-}
-.form{
-    background-color: white;
-}
-.info{
-    background-color: #092956;
-    color: #EEEEE8;
-}
-.info ul{
-    padding: 0 15px;
-}
-.info ul li{
-    list-style: none;
-}   
-#resultado p{
-    color: #9500F1;
-    font-size: 24px;
-    font-weight: bolder;
+
+
+button {
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 10px;
+  padding: 12px 45px;
+  border-radius: 30px;
+  background: #092956;
+  border: none;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: transform 20ms ease-in;
 }
 
-.medida{
-    color: #949BA0;
+button:hover{
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+      0 10px 10px rgba(0, 0, 0, 0.22);
+  transform: scale(1.05);
 }
 
-.posicion{
-    width: 50%;
-    height: 100%;
-    float: left;
+button:active {
+  transform: scale(0.95);
+  box-shadow: none;
 }
-section{
-    top:50%;
-    position: relative;
-    transform: translateY(-50%);
-    overflow: hidden;
+
+#error {
+  color: red;
+  font-weight: bold;
+  display: none;
+}
+
+.resultado {
+  color: #0A81D1;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 5px;
+  display: none;
+}
+ul{
+    font-size: 20px;
+    list-style-type: none;
+}
+li{
+    margin: 5px 0px;
 }
 
 @media only screen and (max-width: 600px) {
-    body {
-      width: 700px;
-    }
-    .card{
+    #contenedor{
         display: flex;
         flex-direction: column;
-        width: 350;
         height: 100%;
-        position: absolute;
+        width: 95%;
         inset: 0;
-        margin:auto;
         align-content: center;
         align-items: center;
+        overflow-y: scroll;
+    }
+    #calculadora{
+        width: 100%;
+
+    }
+    #detalle{
+        width: 100%;
     }
   }
