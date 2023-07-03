@@ -112,10 +112,7 @@ li{
         align-items: center;
         overflow-y: scroll;
     }
-    #calculadora{
-        width: 100%;
-
-    }
+    #calculadora,
     #detalle{
         width: 100%;
     }
